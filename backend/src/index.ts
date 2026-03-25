@@ -5,7 +5,7 @@ import translateRouter from './routes/translate';
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // ── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({
@@ -30,6 +30,5 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
 });
 
 app.listen(PORT, () => {
-  console.log(`✅  VoiceFlow backend running on http://localhost:${PORT}`);
-  console.log(`   OpenAI key loaded: ${process.env.OPENAI_API_KEY ? 'yes ✓' : 'NO – set OPENAI_API_KEY in .env!'}`);
+   console.log(`Server running on port ${PORT}`);
 });
