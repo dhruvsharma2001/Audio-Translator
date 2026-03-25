@@ -1,0 +1,130 @@
+.zone {
+  border: 1.5px dashed rgba(167, 139, 250, 0.35);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: rgba(167, 139, 250, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.zone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(167,139,250,0.05) 0%, rgba(56,189,248,0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.zone:hover:not(.disabled)::before,
+.dragging::before {
+  opacity: 1;
+}
+
+.zone:hover:not(.disabled) {
+  border-color: rgba(167, 139, 250, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(167,139,250,0.12);
+}
+
+.dragging {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(167,139,250,0.15), 0 8px 30px rgba(167,139,250,0.2);
+  transform: scale(1.01);
+}
+
+.hasFile {
+  border-style: solid;
+  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(52, 211, 153, 0.03);
+  padding: 20px 24px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.uploadIcon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.mainText {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f0eeff;
+}
+
+.subText {
+  font-size: 0.8rem;
+  color: rgba(240,238,255,0.4);
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+
+.fileIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.fileMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fileName {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #f0eeff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-size: 0.78rem;
+  color: rgba(240,238,255,0.4);
+}
+
+.changeBtn {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(167,139,250,0.3);
+  background: transparent;
+  color: #a78bfa;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.changeBtn:hover:not(:disabled) {
+  background: rgba(167,139,250,0.12);
+  border-color: #a78bfa;
+}
